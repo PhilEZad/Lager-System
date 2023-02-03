@@ -21,7 +21,7 @@ public class ItemServiceTests
     public void GetAllItems_WithReturnOfNull_ShouldThrowNullReferenceExceptionWithMessage()
     {
         var itemRepository = new Mock<IItemRepository>();
-        ItemService itemService = new ItemService();
+        ItemService itemService = new ItemService(itemRepository.Object);
 
         itemRepository.Setup(x => x.GetAllItems()).Returns((List<Item>)null);
         
