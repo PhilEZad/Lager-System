@@ -10,11 +10,18 @@ public class ItemService : IItemService
     
     public ItemService(IItemRepository itemRepository)
     {
-        _itemRepository = itemRepository ?? throw new NullReferenceException("ItemRepository can not be null.");
+        _itemRepository = itemRepository ?? throw new NullReferenceException("ItemRepository is null.");
     }
     
     public List<Item> GetAllItems()
     {
-        throw new NotImplementedException();
+        List<Item> itemList = _itemRepository.GetAllItems();
+        
+        if (itemList == null)
+        {
+            throw new NullReferenceException("Unable to fetch items from database.");
+        }
+
+        return itemList;
     }
 }
