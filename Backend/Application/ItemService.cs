@@ -1,6 +1,6 @@
 ﻿namespace Application;
 
-public class Class
+public class ItemService
 {
     
 }
