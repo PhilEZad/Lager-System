@@ -43,7 +43,7 @@ export class MyResolver implements Resolve<any> {
 
 //resolve is used on line 30 in app modulle. Resolve er den fetcher data uden refresh
   async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
-    await this.http.getItems(); //getPets is from line 55 in this file
+    await this.http.getItems();
     return true;
   }
 }

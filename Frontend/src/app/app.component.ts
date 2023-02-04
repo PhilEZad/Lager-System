@@ -10,7 +10,6 @@ export class AppComponent {
   constructor(public http: HttpService) {}
   title = 'Frontend';
   Items: any[] = [];
-//used propertys for adding pets
   itemId: number = 0;
   itemName: string = "";
 
