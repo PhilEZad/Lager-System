@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import axios from "axios";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 
-@Injectable({
-  providedIn: 'root'
-})
 export const customAxios = axios.create({
   baseURL: 'http://localhost:7077'
 })
+@Injectable({
+  providedIn: 'root'
+})
+
 export class HttpService {
   items: Items[] = [];
   constructor() { }
