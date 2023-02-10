@@ -17,4 +17,10 @@ public class ItemRepository : IItemRepository
     {
         return _dbContext.ItemTable.ToList();
     }
+
+    public void AddItem(string name)
+    {
+        _dbContext.ItemTable.Add(new Item(){Id = 0,Name = name});
+        _dbContext.SaveChanges();
+    }
 }

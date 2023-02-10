@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTO;
+using Application.Interfaces;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,5 +22,11 @@ public class ItemController : ControllerBase
     public List<Item> GetAllItems()
     {
         return _factionService.GetAllItems();
+    }
+
+    [HttpPost]
+    public void AddItem([FromBody] AddItemRequest dto)
+    {
+        _factionService.AddItem(dto.Name);
     }
 }

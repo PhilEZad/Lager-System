@@ -25,7 +25,7 @@ export class HttpService {
     return [];
   }
 
-  async addItem(dto: { Name: string }) {
+  public async addItem(dto: { Name: string }) {
     const httpResult = await customAxios.post<Items>('api/item', dto);
     this.items.push(httpResult.data)
   }

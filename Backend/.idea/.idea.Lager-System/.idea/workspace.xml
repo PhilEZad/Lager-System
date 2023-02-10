@@ -6,11 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/AddItemRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/Services/http.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/Services/http.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676031652876</updated>
-      <workItem from="1676031659665" duration="3740000" />
+      <workItem from="1676031659665" duration="5950000" />
     </task>
     <servers />
   </component>
