@@ -13,4 +13,8 @@ export class AppComponent {
   itemId: number = 0;
   itemName: string = "";
 
+  print() {
+   this.Items = this.http.getItems();
+   console.log(this.Items);
+  }
 }
