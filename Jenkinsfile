@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'cd Backend/API'
                 sh pwd
+                sh ls
                 sh 'dotnet restore API.csproj'
                 sh 'dotnet build API.csproj'
                 echo 'build complete'
