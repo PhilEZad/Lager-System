@@ -4,7 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'cd Backend/API'
-                sh 'dotnet restore .'
+                sh pwd
+                sh 'dotnet restore API.csproj'
                 sh 'dotnet build API.csproj'
                 echo 'build complete'
             }
