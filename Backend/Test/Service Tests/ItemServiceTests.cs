@@ -30,9 +30,9 @@ public class ItemServiceTests
 
         test.Should().Throw<NullReferenceException>().WithMessage("Unable to fetch items from database.");
     }
-    
+  
     [Fact]
-    public void GetAllItems_WithReturnOfEmptyList_ShouldReturnEmptyList()
+    public void AddItem_Empty_Name()
     {
         var itemRepository = new Mock<IItemRepository>();
         ItemService itemService = new ItemService(itemRepository.Object);
@@ -53,5 +53,11 @@ public class ItemServiceTests
         var itemRepository = new Mock<IItemRepository>();
         ItemValidator itemValidator = new ItemValidator();
         ItemService itemService = new ItemService(itemRepository.Object);
+
+        itemRepository.Setup(x => x.AddItem(""));
+
+        Action test = () => itemService.AddItem("");
+        test.Should().Throw<ArgumentException>().WithMessage("Name must not be empty");
+
     }
 }

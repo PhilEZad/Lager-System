@@ -1,5 +1,7 @@
-﻿using Application.Interfaces;
+﻿using Application.DTO;
+using Application.Interfaces;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -16,8 +18,15 @@ public class ItemController : ControllerBase
     }
     
     [HttpGet]
+    
     public List<Item> GetAllItems()
     {
         return _factionService.GetAllItems();
+    }
+
+    [HttpPost]
+    public void AddItem([FromBody] AddItemRequest dto)
+    {
+        _factionService.AddItem(dto.Name);
     }
 }

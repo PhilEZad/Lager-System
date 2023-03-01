@@ -5,7 +5,16 @@
     <projectFile profileName="IIS Express">API/API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="" />
+    <list default="true" id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/DTO/AddItemRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ItemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +23,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LFiTE57XVyuM5JfDLjs3AmHasI" />
+  <component name="ProjectId" id="2LXyJmt8faL7zLOtzFPnaspejcl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,16 +79,28 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="" />
-      <created>1675473241179</created>
+      <created>1676031652876</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1675473241179</updated>
-      <workItem from="1675473244381" duration="694000" />
+      <updated>1676031652876</updated>
+      <workItem from="1676031659665" duration="5950000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

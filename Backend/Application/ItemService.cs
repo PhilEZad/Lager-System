@@ -24,4 +24,13 @@ public class ItemService : IItemService
 
         return itemList;
     }
+
+    public void AddItem(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ArgumentException("Name must not be empty");
+        }
+        _itemRepository.AddItem(name);
+    }
 }
