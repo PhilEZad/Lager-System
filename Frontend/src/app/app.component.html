@@ -9,8 +9,11 @@
     <div class="row d-flex justify-content-center">
       <button class="AddItemsButton col-6 col-sm-6 my-4" [disabled]="itemName=='' " mat-raised-button
               matTooltip="Save this information to the Card"
-              (click)="http.addItem({Name: itemName
-})">Add Item
+              (click)="addItem()">
+        Add Item
+      </button>
+      <button (click)="print()">
+        print
       </button>
     </div>
   </mat-card>
@@ -19,7 +22,7 @@
 <div class="container">
   <div class="row row-cols-1">
     <div class="row">
-      <mat-card id="" style="" *ngFor="let i of http.items" (click)="(i)">
+      <mat-card id="" style="" *ngFor="let i of this.Items" (click)="(i)">
         <mat-card-title style="display: inline;">{{i.name}}</mat-card-title>
       </mat-card>
     </div>

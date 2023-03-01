@@ -2,32 +2,34 @@ import { Injectable } from '@angular/core';
 import axios from "axios";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 
+export const customAxios = axios.create({
+  baseURL: 'http://localhost:5161'
+})
 @Injectable({
   providedIn: 'root'
 })
-export const customAxios = axios.create({
-  baseURL: 'http://localhost:7077'
-})
+
 export class HttpService {
   items: Items[] = [];
   constructor() { }
 
-  getItems(){
+  public getItems(){
     customAxios.get<Items>('api/item').then(succes => {
       console.log(succes);
        return succes.data;
     }).catch(e=>{
       console.log(e);
-      return null;
+      return [];
     })
     console.log("execute");
-    return null;
+    return [];
   }
 
-  async addItem(dto: { Name: string }) {
+  public async addItem(dto: { Name: string }) {
     const httpResult = await customAxios.post<Items>('api/item', dto);
     this.items.push(httpResult.data)
   }
+
 
 }
 interface Items {
