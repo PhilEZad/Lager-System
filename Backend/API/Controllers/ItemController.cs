@@ -10,23 +10,28 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class ItemController : ControllerBase
 {
-    private readonly IItemService _factionService;
+    private readonly IItemService _itemService;
     
-    public ItemController(IItemService factionService)
+    public ItemController(IItemService itemService)
     {
-        _factionService = factionService ?? throw new NullReferenceException("Faction Service can not be null.");
+        _itemService = itemService ?? throw new NullReferenceException("Faction Service can not be null.");
     }
     
     [HttpGet]
     
     public List<Item> GetAllItems()
     {
-        return _factionService.GetAllItems();
+        return _itemService.GetAllItems();
     }
 
     [HttpPost]
     public void AddItem([FromBody] AddItemRequest dto)
     {
-        _factionService.AddItem(dto.Name);
+        _itemService.AddItem(dto);
+    }
+
+    [HttpPut]
+    public Item EditItem([FromBody] EditItemRequest dto ){
+        return _itemService.EditItem(dto);
     }
 }

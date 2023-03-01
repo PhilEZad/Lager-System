@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTO;
+using Application.Interfaces;
 using Domain;
 using Infrastructure.Interfaces;
 
@@ -25,12 +26,29 @@ public class ItemService : IItemService
         return itemList;
     }
 
-    public void AddItem(string name)
+    public void AddItem(AddItemRequest addItemRequest)
     {
-        if (string.IsNullOrEmpty(name))
+        if (addItemRequest == null  || string.IsNullOrEmpty(addItemRequest.Name))
         {
             throw new ArgumentException("Name must not be empty");
         }
-        _itemRepository.AddItem(name);
+        _itemRepository.AddItem(addItemRequest.Name);
+    }
+
+    public Item EditItem(EditItemRequest editItemRequest)
+    {
+        List<Item> itemList = _itemRepository.GetAllItems();
+
+        if (string.IsNullOrEmpty(editItemRequest.Name)){
+            throw new ArgumentException("Name must not be empty");
+        }
+        if (editItemRequest.Id <= 0){
+            throw new ArgumentException("Id must be above 0");
+        }     
+        if (editItemRequest.Id != itemList[editItemRequest.Id - 1].Id){
+            throw new ArgumentException();
+        }
+        
+        return null;
     }
 }
