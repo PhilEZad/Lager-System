@@ -1,6 +1,7 @@
 using Application;
 using Application.DTO;
 using Application.Interfaces;
+using Application.Validators;
 using Domain;
 using FluentAssertions;
 using Infrastructure.Interfaces;
@@ -30,14 +31,32 @@ public class ItemServiceTests
 
         test.Should().Throw<NullReferenceException>();
     }
-
+  
     [Fact]
     public void AddItem_Empty_Name()
     {
         var itemRepository = new Mock<IItemRepository>();
         ItemService itemService = new ItemService(itemRepository.Object);
 
+        itemRepository.Setup(x => x.GetAllItems()).Returns(new List<Item>());
+        
+        var result = itemService.GetAllItems();
+
+        result.Should().BeEmpty();
+    }
+
+    [Theory]
+    [InlineData(1, "Item 1")]
+    [InlineData(2, "Item 2")]
+    [InlineData(3, "Item 3")]
+    public void GetAllItems_WithInvalidProperties_ShouldThrowValidationExceptionWithMessage(int id, string name)
+    {
+        var itemRepository = new Mock<IItemRepository>();
+        ItemValidator itemValidator = new ItemValidator();
+        ItemService itemService = new ItemService(itemRepository.Object);
+
         itemRepository.Setup(x => x.AddItem(""));
+
 
         Action test = () => itemService.AddItem(new AddItemRequest(""));
         test.Should().Throw<ArgumentException>();
