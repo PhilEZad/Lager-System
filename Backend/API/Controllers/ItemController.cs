@@ -31,7 +31,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPut]
-    public Item EditItem([FromBody] EditItemRequest dto ){
-        return _itemService.EditItem(dto);
+    public Item EditItem([FromBody] Item item ){
+        return _itemService.EditItem(item);
     }
 }

@@ -35,20 +35,25 @@ public class ItemService : IItemService
         _itemRepository.AddItem(addItemRequest.Name);
     }
 
-    public Item EditItem(EditItemRequest editItemRequest)
+    public Item EditItem(Item item)
     {
-        List<Item> itemList = _itemRepository.GetAllItems();
-
-        if (string.IsNullOrEmpty(editItemRequest.Name)){
+        if (item == null){
+            throw new NullReferenceException();
+        }
+        if (string.IsNullOrEmpty(item.Name)){
             throw new ArgumentException("Name must not be empty");
         }
-        if (editItemRequest.Id <= 0){
+        if (item.Id <= 0){
             throw new ArgumentException("Id must be above 0");
         }     
-        if (editItemRequest.Id != itemList[editItemRequest.Id - 1].Id){
+        Item? returnItem = _itemRepository.EditItem(item);
+        if (returnItem == null){
+            throw new NullReferenceException();
+        }
+        if (item.Name != returnItem.Name){
             throw new ArgumentException();
         }
         
-        return null;
+        return returnItem;
     }
 }

@@ -7,5 +7,5 @@ public interface IItemRepository
 {
     public List<Item> GetAllItems();
     public void AddItem(string name);
-    public Item EditItem(EditItemRequest editItemRequest);
+    public Item? EditItem(Item item);
 }
