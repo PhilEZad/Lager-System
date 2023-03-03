@@ -14,8 +14,19 @@ pipeline {
         }
         stage('Test') {
             steps {
-                //
-                echo 'test'
+                dir("Backend/Test"){
+                    sh "dotnet add package coverlet.collection"
+                    sh "dotnet test --collect:'XPlat Code Coverage'"
+                }
+               
+            }
+            post {
+                success{
+                    archiveArtifacts "Test/TestResults/*/coverage.cubertura.xml"
+                    publishCoverage adapters: [istandbulCoberturaAdapter(path: 'Test/TestResults/*/coveragecubertura.xml', thresholds:
+                    [[failUnhealthy: true, threshodTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
+                    sourceFileResolver: sourceFiles('NEVER STORE')
+                }
             }
         }
         stage('Deploy') {
