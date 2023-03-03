@@ -33,7 +33,7 @@ pipeline {
                     sh "ls -R Backend/Test/TestResults"
                     archiveArtifacts "Backend/Test/TestResults/*/coverage.cobertura.xml"
                     publishCoverage adapters: [istanbulCoberturaAdapter(path: "Backend/Test/TestResults/*/coverage.cobertura.xml", thresholds:
-                    [[failUnhealthy: true, threshodTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
+                    [[failUnhealthy: true, thresholdTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
                     sourceFileResolver: sourceFiles('NEVER_STORE')
                 }
             }
