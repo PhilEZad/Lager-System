@@ -5,44 +5,63 @@
     <projectFile profileName="IIS Express">API/API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/DTO/AddItemRequest.cs" afterDir="false" />
+    <list default="true" id="02dc30b6-40b4-4ef6-b9fe-a4579f4588db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyResolver/DependencyResolver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DatabaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DatabaseRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyResolver/DependencyResolver.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="development" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LXyJmt8faL7zLOtzFPnaspejcl" />
+  <component name="ProjectId" id="2LmWkM933l16OZMZVRlhkrJqW18" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/wolf/dev/3rd sem/exam/dlbr&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ],
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/wolf/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.API">
     <configuration name="API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/API/API.csproj" />
@@ -78,29 +97,23 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="" />
-      <created>1676031652876</created>
+      <changelist id="02dc30b6-40b4-4ef6-b9fe-a4579f4588db" name="Changes" comment="" />
+      <created>1676476879896</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676031652876</updated>
-      <workItem from="1676031659665" duration="5950000" />
+      <updated>1676476879896</updated>
+      <workItem from="1676476881204" duration="6023000" />
+      <workItem from="1676913520019" duration="1374000" />
+      <workItem from="1677071386635" duration="43000" />
+      <workItem from="1677483778893" duration="2159000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
