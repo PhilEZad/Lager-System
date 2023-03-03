@@ -16,8 +16,8 @@ pipeline {
             steps {
                 dir("Backend/Test"){
                     sh "dotnet add package coverlet.collector"
+                    sh "mkdir TestResults"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
-                    sh "chown -R 1000:1000 TestResults"
                 }
                
             }
