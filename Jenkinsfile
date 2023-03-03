@@ -17,7 +17,7 @@ pipeline {
                 dir("Backend/Test"){
                     sh "dotnet add package coverlet.collector"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
-                    sh "chown -R 1000:1000 .coverrage"
+                    sh "chown -R 1000:1000 TestResults"
                 }
                
             }
