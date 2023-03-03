@@ -25,6 +25,7 @@ pipeline {
                     sh "dotnet add package coverlet.collector"
                     sh "mkdir TestResults"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
+                    sh "ls -R TestResults"
                 }
                
             }
