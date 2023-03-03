@@ -27,12 +27,7 @@ public class ItemRepository : IItemRepository
 
     public Item EditItem(EditItemRequest editItemRequest)
     {
-        var itemsList = _dbContext.ItemTable.ToList<Item>();
-
-        if (itemsList[editItemRequest.Id - 1].Id != editItemRequest.Id)
-        {
-            return null;
-        }
+        
 
         return null;
     }
