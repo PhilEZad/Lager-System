@@ -31,7 +31,7 @@ pipeline {
             }
             post {
                 success{
-                    sh "ls -R TestResults"
+                    sh "ls -R Backend/Test/TestResults"
                     archiveArtifacts "Backend/Test/TestResults/*/coverage.cubertura.xml"
                     publishCoverage adapters: [istandbulCoberturaAdapter(path: "Backend/Test/TestResults/*/coverage.cubertura.xml", thresholds:
                     [[failUnhealthy: true, threshodTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
