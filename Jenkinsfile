@@ -5,6 +5,13 @@ pipeline {
         //cron('10 * * * *')
     }
     stages {
+        stage('Setup') {
+            steps {
+                dir("Backend/Test"){
+                    sh "rm -rf TestResults"
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh 'dotnet restore Backend/API/API.csproj'
