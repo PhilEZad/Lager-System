@@ -29,4 +29,19 @@ public class ItemController : ControllerBase
     {
         _factionService.AddItem(dto.Name);
     }
+
+    [HttpDelete]
+    [Route("DeleteItem{Id}")]
+    public ActionResult<Item> DeleteItem(int Id)
+    {
+        try
+        {
+            return Ok(_factionService.DeleteItem(Id));
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound("No Item found at ID" + Id);
+        }
+    }
+
 }

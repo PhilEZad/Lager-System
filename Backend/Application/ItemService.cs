@@ -33,4 +33,9 @@ public class ItemService : IItemService
         }
         _itemRepository.AddItem(name);
     }
+
+    public Item DeleteItem(int id)
+    {
+        return _itemRepository.DeleteItem(id);
+    }
 }
