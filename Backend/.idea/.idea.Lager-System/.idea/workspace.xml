@@ -5,13 +5,38 @@
     <projectFile profileName="IIS Express">API/API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="02dc30b6-40b4-4ef6-b9fe-a4579f4588db" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/../.vscode/launch.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.vscode/tasks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Service Tests/ItemServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/src/app/app.module.ts" afterDir="false"
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnionRestAPITemplate/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DependencyResolver/DependencyResolver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DatabaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DatabaseRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyResolver/DependencyResolver.cs" beforeDir="false" />
+
+    <list default="true" id="1c35921a-cb6e-4af9-ab4c-692e3141e567" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/dataSources/a7b4dcec-dcd7-460b-b87d-57f1e4ad7ce5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lager-System/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/ItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ItemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/IItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ItemRepository.cs" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +59,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -53,6 +79,32 @@
       "/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
       "/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache",
       "/home/wolf/.local/share/Symbols/src"
+
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/wolf/dev/3rd sem/exam/dlbr&quot;,
+
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+
+    ],
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/wolf/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/wolf/.local/share/Symbols/src&quot;
+
+
     ]
   }
 }]]></component>

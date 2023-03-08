@@ -34,4 +34,19 @@ public class ItemController : ControllerBase
     public Item EditItem([FromBody] Item item ){
         return _itemService.EditItem(item);
     }
+
+    [HttpDelete]
+    [Route("DeleteItem{Id}")]
+    public ActionResult<Item> DeleteItem(int Id)
+    {
+        try
+        {
+            return Ok(_itemService.DeleteItem(Id));
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound("No Item found at ID" + Id);
+        }
+    }
+
 }

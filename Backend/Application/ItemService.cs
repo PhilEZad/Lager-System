@@ -56,4 +56,14 @@ public class ItemService : IItemService
         
         return returnItem;
     }
+
+    public void AddItem(string name)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Item DeleteItem(int id)
+    {
+       return _itemRepository.DeleteItem(id);
+    }
 }
