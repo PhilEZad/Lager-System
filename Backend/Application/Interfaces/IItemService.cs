@@ -7,11 +7,9 @@ public interface IItemService
 {
     public List<Item> GetAllItems();
     
-    public void AddItem(AddItemRequest addItemRequest);
+    public Item AddItem(Item item);
     public Item EditItem(Item item);
 
-    public void AddItem(string name);
-
     public Item DeleteItem(int id);
-
+    public Item getItemFromId(int id);
 }

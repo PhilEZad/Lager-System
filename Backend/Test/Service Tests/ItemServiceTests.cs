@@ -37,9 +37,9 @@ public class ItemServiceTests
         var itemRepository = new Mock<IItemRepository>();
         ItemService itemService = new ItemService(itemRepository.Object);
 
-        itemRepository.Setup(x => x.AddItem(""));
+        itemRepository.Setup(x => x.AddItem(new Item{Id = 1, Name = ""}));
 
-        Action test = () => itemService.AddItem(new AddItemRequest(""));
+        Action test = () => itemService.AddItem(new Item{Id = 1, Name = ""});
         test.Should().Throw<ArgumentException>();
     }
 

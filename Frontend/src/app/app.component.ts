@@ -10,16 +10,4 @@ import * as http from "http";
 export class AppComponent {
   constructor(private http: HttpService) {}
   title = 'Frontend';
-  Items: any[] = [];
-  itemId: number = 0;
-  itemName: string = "";
-
-  print() {
-   this.Items = this.http.getItems();
-   console.log(this.Items);
-  }
-
-  addItem() {
-    this.http.addItem({Name : this.itemName});
-  }
 }

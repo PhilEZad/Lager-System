@@ -11,27 +11,35 @@ namespace API.Controllers;
 public class ItemController : ControllerBase
 {
     private readonly IItemService _itemService;
-    
+
     public ItemController(IItemService itemService)
     {
         _itemService = itemService ?? throw new NullReferenceException("Faction Service can not be null.");
     }
-    
+
     [HttpGet]
-    
+
     public List<Item> GetAllItems()
     {
         return _itemService.GetAllItems();
     }
 
-    [HttpPost]
-    public void AddItem([FromBody] AddItemRequest dto)
+    [HttpGet]
+    [Route("{id}")]
+    public Item GetFieldFromId([FromRoute] int id)
     {
-        _itemService.AddItem(dto);
+        return _itemService.getItemFromId(id);
+    }
+
+    [HttpPost]
+    public Item AddItem([FromBody] Item item)
+    {
+        return _itemService.AddItem(item);
     }
 
     [HttpPut]
-    public Item EditItem([FromBody] Item item ){
+    public Item EditItem([FromBody] Item item)
+    {
         return _itemService.EditItem(item);
     }
 
@@ -48,5 +56,4 @@ public class ItemController : ControllerBase
             return NotFound("No Item found at ID" + Id);
         }
     }
-
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import { Item } from 'src/assets/item';
 
 export const customAxios = axios.create({
   baseURL: 'http://localhost:5161'
@@ -10,40 +11,52 @@ export const customAxios = axios.create({
 })
 
 export class HttpService {
-  items: Items[] = [];
+  items: Item[] = [];
   constructor() { }
-
-  public getItems(){
-    customAxios.get<Items>('api/item').then(succes => {
-      console.log(succes);
-       return succes.data;
-    }).catch(e=>{
-      console.log(e);
+  
+  public async getItems(): Promise<Item[]> {
+    try {
+      const response = await customAxios.get<Item[]>('api/item');
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.log(error);
       return [];
-    })
-    console.log("execute");
-    return [];
+    }
   }
 
-  public async addItem(dto: { Name: string }) {
-    const httpResult = await customAxios.post<Items>('api/item', dto);
-    this.items.push(httpResult.data)
+  public async addItem(item: Item) {
+    const httpResult = await customAxios.post<Item>('api/item', item);
+    this.items.push(httpResult.data);
   }
 
+  public async deleteItem(id: number): Promise<Item> {
+    try {
+      const response = await customAxios.delete(`api/item/deleteItem${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 
+  public async getItem(id: number): Promise<Item> {
+    try {
+      const response = await customAxios.get<Item>(`api/item/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 }
-interface Items {
-  id: number,
-  name: string
-}
 
-
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MyResolver implements Resolve<any> {
   constructor(private http: HttpService) {
   }
 
-//resolve is used on line 30 in app modulle. Resolve er den fetcher data uden refresh
+  //resolve is used on line 30 in app modulle. Resolve er den fetcher data uden refresh
   async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
     await this.http.getItems();
     return true;

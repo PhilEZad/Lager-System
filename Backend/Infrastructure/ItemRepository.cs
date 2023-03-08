@@ -19,10 +19,11 @@ public class ItemRepository : IItemRepository
         return _dbContext.ItemTable.ToList();
     }
 
-    public void AddItem(string name)
+    public Item AddItem(Item item)
     {
-        _dbContext.ItemTable.Add(new Item() { Id = 0, Name = name });
+        _dbContext.ItemTable.Add(new Item() { Id = 0, Name = item.Name });
         _dbContext.SaveChanges();
+        return item;
     }
 
 
@@ -47,6 +48,10 @@ public class ItemRepository : IItemRepository
                  return item;
              }
 
+    public Item GetItemFromId(int id)
+    {
+        return _dbContext.ItemTable.Find(id);
+    }
 }
 
 

@@ -1,0 +1,12 @@
+<div *ngIf="item">
+    Item
+    <h2>{{item.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{item.id}}</div>
+    <div>
+        <label for="item-name">Item name: </label>
+        <input id="item-name" [(ngModel)]="item.name" placeholder="name">
+    </div>
+    <div>
+        <button (click)="deleteItem()">Delete</button>
+    </div>
+</div>
