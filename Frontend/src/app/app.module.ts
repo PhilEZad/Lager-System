@@ -10,10 +10,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
+import { RemoveItemComponent } from './components/remove-item/remove-item.component';
+import { ItemsComponent } from './components/items/items.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RemoveItemComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,

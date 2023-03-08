@@ -1,0 +1,13 @@
+<div>
+    <table>
+
+    </table>
+</div>
+{{title}}
+<ul>
+    <li *ngFor="let item of items">
+        <a routerLink="/field-detail/{{item.id}}">
+            <span class="badge"></span> {{item.name}}
+        </a>
+    </li>
+</ul>
