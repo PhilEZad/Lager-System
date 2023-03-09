@@ -49,7 +49,18 @@ export class HttpService {
       throw error;
     }
   }
+  public async editItem(item: Item): Promise<Item> {
+    try {
+      const response = await customAxios.put<Item>(`api/item/`, item);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
 }
+
 
 @Injectable({ providedIn: 'root' })
 export class MyResolver implements Resolve<any> {

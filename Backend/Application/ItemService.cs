@@ -64,7 +64,14 @@ public class ItemService : IItemService
 
     public Item DeleteItem(int id)
     {
-        return _itemRepository.DeleteItem(id);
+        if (id <= 0){
+            throw new NullReferenceException("Id must be above 0");
+        }
+        Item? returnItem = _itemRepository.DeleteItem(id);
+        if (returnItem == null){
+            throw new NullReferenceException();
+        }
+        return returnItem;
     }
 
     public Item getItemFromId(int id)

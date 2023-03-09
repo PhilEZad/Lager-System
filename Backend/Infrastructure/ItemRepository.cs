@@ -33,20 +33,20 @@ public class ItemRepository : IItemRepository
         _dbContext.SaveChanges();
         return _dbContext.ItemTable.Find(item.Id);
 
-        
+
     }
     public Item DeleteItem(int id)
-             {
-                 Item? item = _dbContext.ItemTable.FirstOrDefault(x => x.Id == id);
-                 if (item == null)
-                 {
-                     throw new NullReferenceException();
-                 }
-     
-                 _dbContext.ItemTable.Remove(item);
-                 _dbContext.SaveChanges();
-                 return item;
-             }
+    {
+        Item? item = _dbContext.ItemTable.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+        {
+            throw new NullReferenceException();
+        }
+
+        _dbContext.ItemTable.Remove(item);
+        _dbContext.SaveChanges();
+        return item;
+    }
 
     public Item GetItemFromId(int id)
     {

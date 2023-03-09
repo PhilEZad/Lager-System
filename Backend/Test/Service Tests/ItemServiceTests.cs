@@ -37,9 +37,9 @@ public class ItemServiceTests
         var itemRepository = new Mock<IItemRepository>();
         ItemService itemService = new ItemService(itemRepository.Object);
 
-        itemRepository.Setup(x => x.AddItem(new Item{Id = 1, Name = ""}));
+        itemRepository.Setup(x => x.AddItem(new Item { Id = 1, Name = "" }));
 
-        Action test = () => itemService.AddItem(new Item{Id = 1, Name = ""});
+        Action test = () => itemService.AddItem(new Item { Id = 1, Name = "" });
         test.Should().Throw<ArgumentException>();
     }
 
@@ -170,7 +170,43 @@ public class ItemServiceTests
         Action test = () => itemService.EditItem(editItem);
         test.Should().Throw<NullReferenceException>();
     }
-    
-    
-    
+
+
+    // Check if return item is null
+    [Fact]
+    public void DeleteItem_ReturnItemNull_ShouldThrowNullArgumentException()
+    {
+        var item = new Item
+        {
+            Name = "Test"
+        };
+
+        var itemRepository = new Mock<IItemRepository>();
+        ItemService itemService = new ItemService(itemRepository.Object);
+
+        itemRepository.Setup(x => x.DeleteItem(item.Id)).Returns(() =>
+        {
+            return null;
+        });
+
+        Action test = () => itemService.DeleteItem(item.Id);
+        test.Should().Throw<NullReferenceException>();
+    }
+
+    // Test if there is an id
+    [Fact]
+    public void DeleteItem_NullItemId_ShouldThrowNullArgumentException()
+    {
+        var item = new Item
+        {
+            Id = 1,
+            Name = "Test"
+        };
+
+        var itemRepository = new Mock<IItemRepository>();
+        ItemService itemService = new ItemService(itemRepository.Object);
+
+        Action test = () => itemService.DeleteItem(item.Id);
+        test.Should().Throw<NullReferenceException>();
+    }
 }

@@ -7,6 +7,8 @@
         <input id="item-name" [(ngModel)]="item.name" placeholder="name">
     </div>
     <div>
+        <button type="button" (click)="editItem()">Edit Item</button>
+        <button type="button" (click)="goBack()">go back</button>
         <button (click)="deleteItem()">Delete</button>
     </div>
 </div>
