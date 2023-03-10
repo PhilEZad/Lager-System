@@ -42,7 +42,6 @@ public class ItemRepository : IItemRepository
         {
             throw new NullReferenceException();
         }
-
         _dbContext.ItemTable.Remove(item);
         _dbContext.SaveChanges();
         return item;

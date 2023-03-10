@@ -172,7 +172,6 @@ public class ItemServiceTests
     }
 
 
-    // Check if return item is null
     [Fact]
     public void DeleteItem_ReturnItemNull_ShouldThrowNullArgumentException()
     {
@@ -193,7 +192,6 @@ public class ItemServiceTests
         test.Should().Throw<NullReferenceException>();
     }
 
-    // Test if there is an id
     [Fact]
     public void DeleteItem_NullItemId_ShouldThrowNullArgumentException()
     {
