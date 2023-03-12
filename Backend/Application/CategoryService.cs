@@ -1,33 +1,83 @@
 using Application.Interfaces;
 using Domain;
+using Infrastructure.Interfaces;
 
 namespace Application;
 
-public class CategoryService: ICategoryService
+public class CategoryService : ICategoryService
 {
+
+    private readonly ICategoryRepository _repository;
+
+    public CategoryService(ICategoryRepository repository)
+    {
+        _repository = repository ?? throw new NullReferenceException("CategoryRepository is null.");
+    }
     public List<Category> GetAllCategories()
     {
-        throw new NotImplementedException();
+        List<Category> categoryList = _repository.GetAllCategories();
+
+        if (categoryList == null)
+        {
+            throw new NullReferenceException("Unable to fetch categories from database.");
+        }
+
+        return categoryList;
     }
 
     public Category GetById(int id)
     {
-        throw new NotImplementedException();
+        return _repository.GetById(id);
     }
 
     public Category Add(Category category)
     {
-        throw new NotImplementedException();
+        if (category == null || string.IsNullOrEmpty(category.CategoryName))
+        {
+            throw new ArgumentException("Name must not be empty");
+        }
+        return _repository.Add(category);
     }
 
     public Category Edit(Category category)
     {
-        throw new NotImplementedException();
+        if (category == null)
+        {
+            throw new NullReferenceException();
+        }
+        if (string.IsNullOrEmpty(category.CategoryName))
+        {
+            throw new ArgumentException("Name must not be empty");
+        }
+        if (category.CategoryId <= 0)
+        {
+            throw new ArgumentException("Id must be above 0");
+        }
+        Category? returnCategory = _repository.Edit(category);
+        if (returnCategory == null)
+        {
+            throw new NullReferenceException();
+        }
+        if (category.CategoryName != returnCategory.CategoryName)
+        {
+            throw new ArgumentException();
+        }
+
+        return returnCategory;
     }
 
-    public object? Delete(int id)
+    public Category? Delete(int id)
     {
-        throw new NotImplementedException();
+        if (id <= 0)
+        {
+            throw new NullReferenceException("Id must be above 0");
+        }
+        Category? returnCategory = _repository.Delete(id);
+        if (returnCategory == null)
+        {
+            throw new NullReferenceException();
+        }
+        return returnCategory;
     }
 }
-    
+

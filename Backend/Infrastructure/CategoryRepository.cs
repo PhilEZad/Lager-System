@@ -1,32 +1,50 @@
-using Application.Interfaces;
+using Infrastructure.Interfaces;
 using Domain;
 
 namespace Infrastructure;
 
 public class CategoryRepository: ICategoryRepository
 {
+    private readonly DatabaseContext _dbContext;
+    
+    public CategoryRepository(DatabaseContext dbContext)
+    {
+        _dbContext = dbContext ?? throw new NullReferenceException("DatabaseContext can not be null.");
+    }
+    
     public List<Category> GetAllCategories()
     {
-        throw new NotImplementedException();
+        return _dbContext.CategoryTable.ToList();
     }
 
     public Category GetById(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.CategoryTable.Find(id);
     }
 
     public Category Add(Category category)
     {
-        throw new NotImplementedException();
+        _dbContext.CategoryTable.Add(new Category() { CategoryId = 0, CategoryName = category.CategoryName });
+        _dbContext.SaveChanges();
+        return category;
     }
 
     public Category Edit(Category category)
     {
-        throw new NotImplementedException();
+        _dbContext.CategoryTable.Update(category);
+        _dbContext.SaveChanges();
+        return _dbContext.CategoryTable.Find(category.CategoryId);
     }
 
-    public object? Delete(int id)
+    public Category? Delete(int id)
     {
-        throw new NotImplementedException();
+        Category? category = _dbContext.CategoryTable.FirstOrDefault(x => x.CategoryId == id);
+        if (category == null)
+        {
+            throw new NullReferenceException();
+        }
+        _dbContext.CategoryTable.Remove(category);
+        _dbContext.SaveChanges();
+        return category;
     }
 }

@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Domain;
 using Infrastructure.Interfaces;
 

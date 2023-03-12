@@ -21,7 +21,7 @@ public class ItemRepository : IItemRepository
 
     public Item AddItem(Item item)
     {
-        _dbContext.ItemTable.Add(new Item() { Id = 0, Name = item.Name });
+        _dbContext.ItemTable.Add(item);
         _dbContext.SaveChanges();
         return item;
     }

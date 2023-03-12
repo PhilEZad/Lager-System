@@ -17,33 +17,33 @@ public class CategoryController : ControllerBase
 
     [HttpGet]
 
-    public List<Category> GetAllItems()
+    public List<Category> GetAllCategories()
     {
         return _categoryService.GetAllCategories();
     }
 
     [HttpGet]
     [Route("{id}")]
-    public Category GetFieldFromId([FromRoute] int id)
+    public Category GetById([FromRoute] int id)
     {
         return _categoryService.GetById(id);
     }
 
     [HttpPost]
-    public Category AddItem([FromBody] Category category)
+    public Category Add([FromBody] Category category)
     {
         return _categoryService.Add(category);
     }
 
     [HttpPut]
-    public Category EditItem([FromBody] Category category)
+    public Category Edit([FromBody] Category category)
     {
         return _categoryService.Edit(category);
     }
 
     [HttpDelete]
     [Route("DeleteItem{Id}")]
-    public ActionResult<Category> DeleteItem(int Id)
+    public ActionResult<Category> Delete(int Id)
     {
         try
         {

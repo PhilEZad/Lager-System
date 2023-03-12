@@ -32,7 +32,7 @@ export class ItemsComponent implements OnInit {
   }
 
   addItem(): void {
-    let item = new Item(0, this.name);
+    let item = new Item(0, this.name, "default_loc");
     this.http.addItem(item).then(itmes => {
       this.getItems();
     });

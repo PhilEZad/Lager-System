@@ -1,6 +1,4 @@
 using Application;
-using Application.DTO;
-using Application.Interfaces;
 using Domain;
 using FluentAssertions;
 using Infrastructure.Interfaces;

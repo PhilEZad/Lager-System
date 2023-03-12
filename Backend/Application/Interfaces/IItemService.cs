@@ -1,5 +1,4 @@
-﻿using Application.DTO;
-using Domain;
+﻿using Domain;
 
 namespace Application.Interfaces;
 

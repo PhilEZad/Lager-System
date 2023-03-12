@@ -18,9 +18,18 @@ public class DatabaseContext : DbContext
         modelBuilder.Entity<Item>()
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
-        
-        //Required Properties
+
+        //Category Table
+        modelBuilder.Entity<Category>()
+            .HasKey(x => x.CategoryId)
+            .HasName("PK_Category");
+        //Generated Keys
+        modelBuilder.Entity<Category>()
+            .Property(x => x.CategoryId)
+            .ValueGeneratedOnAdd();
     }
     
     public DbSet<Item> ItemTable { get; set; }
+
+    public DbSet<Category> CategoryTable { get; set; }
 }

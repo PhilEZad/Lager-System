@@ -2,7 +2,7 @@
 <ul>
     <li *ngFor="let item of items">
         <a routerLink="/detail/{{item.id}}">
-            <span class="badge"></span> {{item.name}}
+            <span class="badge"></span> {{item.name}} {{item.location}}
         </a>
     </li>
 </ul>
@@ -25,6 +25,7 @@
       <td>Emil</td>
       <td>Tobias</td>
       <td>Linus</td>
+      <td>Category</td>
     </tr>
     <tr>
       <td>16</td>

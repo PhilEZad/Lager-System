@@ -1,6 +1,6 @@
 using Domain;
 
-namespace Application.Interfaces;
+namespace Infrastructure.Interfaces;
 
 public interface ICategoryRepository
 {
@@ -12,5 +12,5 @@ public interface ICategoryRepository
 
     public Category Edit(Category category);
 
-    public object? Delete(int id);
+    public Category? Delete(int id);
 }
