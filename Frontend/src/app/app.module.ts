@@ -14,6 +14,7 @@ import { RemoveItemComponent } from './components/remove-item/remove-item.compon
 import { ItemsComponent } from './components/items/items.component';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
     RemoveItemComponent,
     ItemsComponent,
     HomeComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,

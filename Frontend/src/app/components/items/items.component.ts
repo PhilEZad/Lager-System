@@ -13,9 +13,8 @@ export class ItemsComponent implements OnInit {
   constructor(private http: HttpService, private route: ActivatedRoute) { }
 
   selectedItem?: Item;
-  title = "Items list";
   items: Item[] = [];
-  name: string = "";
+  itemsFields = Item.List;
 
   ngOnInit(): void {
     this.getItems();
@@ -32,9 +31,6 @@ export class ItemsComponent implements OnInit {
   }
 
   addItem(): void {
-    let item = new Item(0, this.name, "default_loc");
-    this.http.addItem(item).then(itmes => {
-      this.getItems();
-    });
+    
   }
 }

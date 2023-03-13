@@ -27,6 +27,9 @@ public class DatabaseContext : DbContext
         modelBuilder.Entity<Category>()
             .Property(x => x.CategoryId)
             .ValueGeneratedOnAdd();
+
+        //Generate relations
+        
     }
     
     public DbSet<Item> ItemTable { get; set; }

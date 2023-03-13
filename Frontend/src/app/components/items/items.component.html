@@ -1,37 +1,20 @@
-{{title}}
-<ul>
-    <li *ngFor="let item of items">
-        <a routerLink="/detail/{{item.id}}">
-            <span class="badge"></span> {{item.name}} {{item.location}}
-        </a>
-    </li>
-</ul>
-
 <div>
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" [(ngModel)]="name">
-    </div>
-    <button (click)="addItem()">Add Item</button>
+    <button routerLink="/additem">Add Item</button>
 </div>
 
 <table>
     <tr>
-      <th *ngFor="let item of items">
-        
+      <th *ngFor="let name of itemsFields">
+        {{name.name}}
       </th>
     </tr>
-    <tr>
-      <td>Emil</td>
-      <td>Tobias</td>
-      <td>Linus</td>
-      <td>Category</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>14</td>
-      <td>10</td>
+    <tr *ngFor="let item of items">
+      <td>{{item.id}}</td>
+      <td><a routerLink="/detail/{{item.id}}">
+        <span class="badge">{{item.name}}</span>
+      </a></td>
+      <td>{{item.category}}</td>
+      <td>{{item.location}}</td>
+      <td>{{item.status}}</td>
     </tr>
   </table> 
-
-<app-item-details></app-item-details>

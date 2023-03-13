@@ -1,4 +1,4 @@
-<div *ngIf="item">
+<div [(ngModel)]="item">
     Item
     <h2>{{item.name | uppercase}} Details</h2>
     <div><span>id: </span>{{item.id}}</div>
@@ -21,8 +21,7 @@
         <input id="item-name" [(ngModel)]="item.status" placeholder="name">
     </div>
     <div>
-        <button type="button" (click)="editItem()">Edit Item</button>
+        <button type="button" (click)="addItem()">Edit Item</button>
         <button type="button" (click)="goBack()">go back</button>
-        <button (click)="deleteItem()">Delete</button>
     </div>
 </div>

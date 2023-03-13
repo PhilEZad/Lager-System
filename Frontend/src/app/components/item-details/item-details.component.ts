@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Item } from 'src/assets/item';
 import { HttpService } from 'src/Services/http.service';
 import { Location } from '@angular/common';
+import { Category } from 'src/assets/category';
 
 @Component({
   selector: 'app-item-details',
@@ -17,10 +18,12 @@ export class ItemDetailsComponent implements OnInit {
     private location: Location
   ) { }
 
+  categories: Category[] = [];
   @Input() item!: Item;
 
   ngOnInit(): void {
     this.getItem();
+    this.getCategories();
   }
 
   getItem(): void {
@@ -28,8 +31,14 @@ export class ItemDetailsComponent implements OnInit {
     this.http.getItem(id).then(item => {
       this.item = item;
     });
-
   }
+  
+  getCategories(): void {
+    this.http.getCategories().then(categories => {
+      this.categories = categories;
+    })
+  }
+
   deleteItem(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.http.deleteItem(id).then(item => {
