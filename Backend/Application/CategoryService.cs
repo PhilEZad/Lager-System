@@ -71,11 +71,11 @@ public class CategoryService : ICategoryService
     {
         if (id <= 0)
         {
-            throw new NullReferenceException("Id must be above 0");
+            throw new ArgumentNullException("Id must be above 0");
         }
-        Category? returnCategory = _repository.Delete(id);
+        int change = _repository.Delete(id);
         
-        if (returnCategory == null)
+        if (change == 0)
         {
             throw new NullReferenceException();
         }

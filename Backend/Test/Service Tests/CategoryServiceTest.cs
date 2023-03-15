@@ -171,6 +171,7 @@ public class CategoryServiceTest
     {
         var item = new Category
         {
+            CategoryId = 1,
             CategoryName = "Test"
         };
 
@@ -179,7 +180,7 @@ public class CategoryServiceTest
 
         categoryRepository.Setup(x => x.Delete(item.CategoryId)).Returns(() =>
         {
-            return null;
+            return 0;
         });
 
         Action test = () => categoryService.Delete(item.CategoryId);
