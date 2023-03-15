@@ -53,6 +53,7 @@ public class CategoryService : ICategoryService
         {
             throw new ArgumentException("Id must be above 0");
         }
+        
         Category? returnCategory = _repository.Edit(category);
         
         if (returnCategory == null)
@@ -73,6 +74,7 @@ public class CategoryService : ICategoryService
         {
             throw new ArgumentNullException("Id must be above 0");
         }
+        
         int change = _repository.Delete(id);
         
         if (change == 0)

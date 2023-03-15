@@ -51,7 +51,7 @@ public class CategoryController : ControllerBase
         }
         catch (KeyNotFoundException)
         {
-            return NotFound("No Item found at ID" + Id);
+            return NotFound("No Item with " + Id + " found.");
         }
     }
 }
