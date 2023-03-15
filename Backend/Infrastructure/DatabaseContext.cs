@@ -14,16 +14,15 @@ public class DatabaseContext : DbContext
             .HasKey(x => x.Id)
             .HasName("PK_Item");
         
+        modelBuilder.Entity<Category>()
+            .HasKey(x => x.CategoryId)
+            .HasName("PK_Category");
+        
         //Generate Keys
         modelBuilder.Entity<Item>()
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
-
-        //Category Table
-        modelBuilder.Entity<Category>()
-            .HasKey(x => x.CategoryId)
-            .HasName("PK_Category");
-        //Generated Keys
+        
         modelBuilder.Entity<Category>()
             .Property(x => x.CategoryId)
             .ValueGeneratedOnAdd();
@@ -33,6 +32,5 @@ public class DatabaseContext : DbContext
     }
     
     public DbSet<Item> ItemTable { get; set; }
-
     public DbSet<Category> CategoryTable { get; set; }
 }
