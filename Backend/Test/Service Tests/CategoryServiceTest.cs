@@ -137,12 +137,6 @@ public class CategoryServiceTest
     [Fact]
     public void EditCategory_NullItem_ShouldThrowNullArgumentException()
     {
-        var editCategory = new Item
-        {
-            Id = 1,
-            Name = "Test"
-        };
-
         var categoryRepository = new Mock<ICategoryRepository>();
         CategoryService categoryService = new CategoryService(categoryRepository.Object);
 
@@ -207,5 +201,4 @@ public class CategoryServiceTest
         Action test = () => categoryService.Delete(item.CategoryId);
         test.Should().Throw<NullReferenceException>();
     }
-
 }

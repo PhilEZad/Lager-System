@@ -39,10 +39,6 @@ public class CategoryRepository: ICategoryRepository
     public Category? Delete(int id)
     {
         Category? category = _dbContext.CategoryTable.FirstOrDefault(x => x.CategoryId == id);
-        if (category == null)
-        {
-            throw new NullReferenceException();
-        }
         _dbContext.CategoryTable.Remove(category);
         _dbContext.SaveChanges();
         return category;

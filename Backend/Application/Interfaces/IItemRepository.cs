@@ -9,6 +9,6 @@ public interface IItemRepository
     public Item AddItem(Item item);
     public Item? EditItem(Item item);
 
-    public Item DeleteItem(int id);
+    public int DeleteItem(int id);
     public Item GetItemFromId(int id);
 }

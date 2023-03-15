@@ -13,5 +13,5 @@ public interface ICategoryService
 
     public Category Edit(Category category);
 
-    public Category? Delete(int id);
+    public Boolean Delete(int id);
 }
