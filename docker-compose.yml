@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  api:
+    image: backend
+    ports:
+      - "8080:80"
+    networks:
+      - lager
+    
+  frontend:
+    image: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - lager
+
+networks:
+  lager:
+    name: lager
