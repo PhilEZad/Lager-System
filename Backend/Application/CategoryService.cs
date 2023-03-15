@@ -53,7 +53,9 @@ public class CategoryService : ICategoryService
         {
             throw new ArgumentException("Id must be above 0");
         }
+        
         Category? returnCategory = _repository.Edit(category);
+        
         if (returnCategory == null)
         {
             throw new NullReferenceException();
@@ -66,18 +68,21 @@ public class CategoryService : ICategoryService
         return returnCategory;
     }
 
-    public Category? Delete(int id)
+    public Boolean Delete(int id)
     {
         if (id <= 0)
         {
-            throw new NullReferenceException("Id must be above 0");
+            throw new ArgumentNullException("Id must be above 0");
         }
-        Category? returnCategory = _repository.Delete(id);
-        if (returnCategory == null)
+        
+        int change = _repository.Delete(id);
+        
+        if (change == 0)
         {
             throw new NullReferenceException();
         }
-        return returnCategory;
+        
+        return true;
     }
 }
 

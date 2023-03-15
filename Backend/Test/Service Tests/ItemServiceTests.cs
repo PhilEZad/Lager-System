@@ -175,6 +175,7 @@ public class ItemServiceTests
     {
         var item = new Item
         {
+            Id = 1,
             Name = "Test"
         };
 
@@ -183,7 +184,7 @@ public class ItemServiceTests
 
         itemRepository.Setup(x => x.DeleteItem(item.Id)).Returns(() =>
         {
-            return null;
+            return 0;
         });
 
         Action test = () => itemService.DeleteItem(item.Id);

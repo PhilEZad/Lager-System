@@ -12,5 +12,5 @@ public interface ICategoryRepository
 
     public Category Edit(Category category);
 
-    public Category? Delete(int id);
+    public int Delete(int id);
 }

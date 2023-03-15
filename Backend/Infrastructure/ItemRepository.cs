@@ -35,16 +35,11 @@ public class ItemRepository : IItemRepository
 
 
     }
-    public Item DeleteItem(int id)
+    public int DeleteItem(int id)
     {
         Item? item = _dbContext.ItemTable.FirstOrDefault(x => x.Id == id);
-        if (item == null)
-        {
-            throw new NullReferenceException();
-        }
         _dbContext.ItemTable.Remove(item);
-        _dbContext.SaveChanges();
-        return item;
+        return _dbContext.SaveChanges();
     }
 
     public Item GetItemFromId(int id)

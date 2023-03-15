@@ -9,6 +9,6 @@ public interface IItemService
     public Item AddItem(Item item);
     public Item EditItem(Item item);
 
-    public Item DeleteItem(int id);
+    public Boolean DeleteItem(int id);
     public Item getItemFromId(int id);
 }

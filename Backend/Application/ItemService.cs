@@ -48,7 +48,9 @@ public class ItemService : IItemService
         {
             throw new ArgumentException("Id must be above 0");
         }
+        
         Item? returnItem = _itemRepository.EditItem(item);
+        
         if (returnItem == null)
         {
             throw new NullReferenceException();
@@ -61,16 +63,19 @@ public class ItemService : IItemService
         return returnItem;
     }
 
-    public Item DeleteItem(int id)
+    public Boolean DeleteItem(int id)
     {
-        if (id <= 0){
-            throw new NullReferenceException("Id must be above 0");
+        if (id <= 0)
+        {
+            throw new ArgumentException("Id must be above 0");
         }
-        Item? returnItem = _itemRepository.DeleteItem(id);
-        if (returnItem == null){
-            throw new NullReferenceException();
+        
+        if (_itemRepository.DeleteItem(id) <= 0)
+        {
+            throw new NullReferenceException("Unable to delete item");
         }
-        return returnItem;
+        
+        return true;
     }
 
     public Item getItemFromId(int id)

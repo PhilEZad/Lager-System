@@ -18,33 +18,33 @@ public class ItemController : ControllerBase
 
     [HttpGet]
 
-    public List<Item> GetAllItems()
+    public ActionResult<List<Item>> GetAllItems()
     {
-        return _itemService.GetAllItems();
+        return Ok(_itemService.GetAllItems());
     }
 
     [HttpGet]
     [Route("{id}")]
-    public Item GetFieldFromId([FromRoute] int id)
+    public ActionResult<Item> GetFieldFromId([FromRoute] int id)
     {
-        return _itemService.getItemFromId(id);
+        return Ok(_itemService.getItemFromId(id));
     }
 
     [HttpPost]
-    public Item AddItem([FromBody] Item item)
+    public ActionResult<Item> AddItem([FromBody] Item item)
     {
-        return _itemService.AddItem(item);
+        return Ok(_itemService.AddItem(item));
     }
 
     [HttpPut]
-    public Item EditItem([FromBody] Item item)
+    public ActionResult<Item> EditItem([FromBody] Item item)
     {
-        return _itemService.EditItem(item);
+        return Ok(_itemService.EditItem(item));
     }
 
     [HttpDelete]
     [Route("DeleteItem{Id}")]
-    public ActionResult<Item> DeleteItem(int Id)
+    public ActionResult<Boolean> DeleteItem(int Id)
     {
         try
         {

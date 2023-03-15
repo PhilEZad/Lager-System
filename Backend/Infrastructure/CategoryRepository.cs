@@ -36,15 +36,10 @@ public class CategoryRepository: ICategoryRepository
         return _dbContext.CategoryTable.Find(category.CategoryId);
     }
 
-    public Category? Delete(int id)
+    public int Delete(int id)
     {
         Category? category = _dbContext.CategoryTable.FirstOrDefault(x => x.CategoryId == id);
-        if (category == null)
-        {
-            throw new NullReferenceException();
-        }
         _dbContext.CategoryTable.Remove(category);
-        _dbContext.SaveChanges();
-        return category;
+        return _dbContext.SaveChanges();
     }
 }

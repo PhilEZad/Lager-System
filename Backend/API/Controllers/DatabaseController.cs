@@ -16,8 +16,9 @@ public class DatabaseController : ControllerBase
     }
     
     [HttpGet]
-    public void buildDB()
+    public string buildDB()
     {
         _databaseRepository.buildDB();
+        return "Database has been built.";
     }
 }

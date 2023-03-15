@@ -43,7 +43,7 @@ public class CategoryController : ControllerBase
 
     [HttpDelete]
     [Route("DeleteItem{Id}")]
-    public ActionResult<Category> Delete(int Id)
+    public ActionResult<Boolean> Delete(int Id)
     {
         try
         {
@@ -51,7 +51,7 @@ public class CategoryController : ControllerBase
         }
         catch (KeyNotFoundException)
         {
-            return NotFound("No Item found at ID" + Id);
+            return NotFound("No Item with " + Id + " found.");
         }
     }
 }

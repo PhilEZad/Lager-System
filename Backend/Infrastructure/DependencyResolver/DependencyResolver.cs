@@ -9,7 +9,6 @@ public class DependencyResolver
     {
         service.AddScoped<IItemRepository, ItemRepository>();
         service.AddScoped<ICategoryRepository, CategoryRepository>();
-        
         service.AddScoped<IDatabaseRepository, DatabaseRepository>();
         
     }
