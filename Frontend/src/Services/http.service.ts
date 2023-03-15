@@ -5,7 +5,7 @@ import { Item } from 'src/assets/item';
 import { Category } from 'src/assets/category';
 
 export const customAxios = axios.create({
-  baseURL: 'http://localhost:5161'
+  baseURL: 'http://localhost:8080'
 })
 @Injectable({
   providedIn: 'root'
