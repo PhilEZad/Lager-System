@@ -43,7 +43,7 @@ public class CategoryController : ControllerBase
 
     [HttpDelete]
     [Route("DeleteItem{Id}")]
-    public ActionResult<Category> Delete(int Id)
+    public ActionResult<Boolean> Delete(int Id)
     {
         try
         {
