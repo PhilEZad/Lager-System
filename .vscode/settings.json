@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 63306,
+            "driver": "MSSQL",
+            "name": "Lagersystem",
+            "database": "Lager",
+            "username": "root",
+            "password": "yeet"
+        }
+    ]
+}
