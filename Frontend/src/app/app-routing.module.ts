@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { ItemsComponent } from './components/items/items.component';
@@ -12,6 +15,9 @@ const routes: Routes = [
   { path: `home`, component: HomeComponent },
   { path: 'detail/:id', component: ItemDetailsComponent },
   { path: `additem`, component: AddItemComponent },
+  { path: `admin`, component: AdminComponent },
+  { path: `category/:id`, component: CategoryEditComponent },
+  { path: `category-add`, component: CategoryAddComponent },
 ]
 
 @NgModule({

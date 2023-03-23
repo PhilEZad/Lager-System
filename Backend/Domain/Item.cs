@@ -6,5 +6,6 @@ public class Item
     public string Name { get; set; }
     public string Location { get; set; }
     public int Status { get; set; }
-    public Category Category { get; set; }
+    public int Category { get; set; }
+    public int Count { get; set;}
 }

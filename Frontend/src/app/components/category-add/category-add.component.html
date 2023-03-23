@@ -1,0 +1,10 @@
+<div *ngIf="category">
+    <div>
+        <label for="item-name">Name: </label>
+        <input id="item-name" [(ngModel)]="category.categoryName" placeholder="name">
+    </div>
+    <div>
+        <button type="button" (click)="add()">Save New</button>
+        <button type="button" (click)="goBack()">go back</button>
+    </div>
+</div>
