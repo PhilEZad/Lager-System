@@ -13,7 +13,7 @@
       <td><a routerLink="/detail/{{item.id}}">
         <span class="badge">{{item.name}}</span>
       </a></td>
-      <td>{{item.category}}</td>
+      <td>{{getCategoryName(item.category)}}</td>
       <td>{{item.location}}</td>
       <td>{{item.status}}</td>
       <td>{{item.count}}</td>
