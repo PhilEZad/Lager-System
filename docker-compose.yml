@@ -17,6 +17,26 @@ services:
     networks:
       - lager
 
+  database:
+    image: mysql
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: yeet
+      MYSQL_DATABASE: Lager
+    ports:
+      - 63306:3306
+
+  flyway:
+    image: flyway/flyway
+    command: migrate
+    volumes:
+      - ./db:/flyway/sql
+      - ./db:/flyway/conf
+    depends_on:
+      - database
+
 networks:
   lager:
     name: lager
