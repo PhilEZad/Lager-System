@@ -1,0 +1,18 @@
+<table>
+    <h2>Category Table</h2>
+    <tr>
+      <th></th>
+      <th><button routerLink="/category-add">Add Category</button></th>
+    </tr>
+    <tr>
+      <th *ngFor="let name of tableNames">
+        {{name.name}}
+      </th>
+    </tr>
+    <tr *ngFor="let category of categoryTable">
+      <td>{{category.categoryId}}</td>
+      <td><a routerLink="/category/{{category.categoryId}}">
+        <span class="categoryName">{{category.categoryName}}</span>
+      </a></td>
+    </tr>
+  </table> 

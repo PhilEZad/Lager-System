@@ -1,0 +1,14 @@
+<div *ngIf="category">
+    Item
+    <h2>{{category.categoryName| uppercase}} Details</h2>
+    <div><span>id: </span>{{category.categoryId}}</div>
+    <div>
+        <label for="item-name">Name: </label>
+        <input id="item-name" [(ngModel)]="category.categoryName" placeholder="name">
+    </div>
+    <div>
+        <button type="button" (click)="editCategory()">Save</button>
+        <button type="button" (click)="goBack()">go back</button>
+        <button (click)="deleteCategory()">Delete</button>
+    </div>
+</div>

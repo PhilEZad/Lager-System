@@ -12,12 +12,16 @@ export const customAxios = axios.create({
 })
 
 export class HttpService {
+
   items: Item[] = [];
+  categories: Category[] = [];
   constructor() { }
-  
-  public async getItems(): Promise<Item[]> {
+
+
+
+  public async getCategories(): Promise<Category[]> {
     try {
-      const response = await customAxios.get<Item[]>('api/item');
+      const response = await customAxios.get<Category[]>('api/category');
       console.log(response);
       return response.data;
     } catch (error) {
@@ -25,10 +29,50 @@ export class HttpService {
       return [];
     }
   }
-  
-  public async getCategories(): Promise<Category[]> {
+
+  public async getCategory(id: number): Promise<Category> {
     try {
-      const response = await customAxios.get<Category[]>('api/category');
+      const response = await customAxios.get<Category>(`api/category/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  public async deleteCategory(id: number): Promise<Category> {
+    try {
+      const response = await customAxios.delete(`api/category/deleteItem${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  public async editCategory(category: Category) {
+    try {
+      const response = await customAxios.put<Category>(`api/category`, category);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  public async addCategory(category: Category) {
+    try {
+      const httpResult = await customAxios.post<Category>('api/category', category);
+      this.categories.push(httpResult.data);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  public async getItems(): Promise<Item[]> {
+    try {
+      const response = await customAxios.get<Item[]>('api/item');
       console.log(response);
       return response.data;
     } catch (error) {
@@ -70,7 +114,6 @@ export class HttpService {
       throw error;
     }
   }
-
 }
 
 

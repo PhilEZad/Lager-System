@@ -15,6 +15,9 @@ import { ItemsComponent } from './components/items/items.component';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CategoryEditComponent } from './components/category-edit/category-edit.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     ItemsComponent,
     HomeComponent,
     ItemDetailsComponent,
-    AddItemComponent
+    AddItemComponent,
+    AdminComponent,
+    CategoryEditComponent,
+    CategoryAddComponent
   ],
   imports: [
     BrowserModule,
