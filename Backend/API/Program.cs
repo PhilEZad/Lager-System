@@ -1,5 +1,6 @@
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,8 @@ builder.Services.AddCors();
 // Database file
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-    options.UseSqlite(
-        "Data Source=db.db"
+    options.UseMySQL(
+        builder.Configuration.GetConnectionString("DefaultConnection")
     );
     options.EnableSensitiveDataLogging();
     options.EnableDetailedErrors();

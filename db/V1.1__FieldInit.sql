@@ -1,2 +1,0 @@
-ALTER TABLE ItemTable 
-RENAME COLUMN ID to Id;

@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                //
+                // dotnet publish -o ../../outputs
                 echo 'deploy'
             }
         }

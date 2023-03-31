@@ -7,6 +7,8 @@ services:
       - "8080:80"
     networks:
       - lager
+    depends_on:
+      - database
     
   frontend:
     image: frontend
@@ -27,6 +29,8 @@ services:
       MYSQL_DATABASE: Lager
     ports:
       - 63306:3306
+    networks:
+      - lager
 
   flyway:
     image: flyway/flyway
@@ -36,6 +40,8 @@ services:
       - ./db:/flyway/conf
     depends_on:
       - database
+    networks:
+      - lager
 
 networks:
   lager:

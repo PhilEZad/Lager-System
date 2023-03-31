@@ -1,5 +1,0 @@
-CREATE TABLE StatusTable (
-    StatusId INT AUTO_INCREMENT PRIMARY KEY,
-    StatusName VARCHAR(100) NOT NULL,
-    StatusDescription VARCHAR(256) NOT NULL
-);
