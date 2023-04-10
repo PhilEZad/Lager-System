@@ -47,6 +47,18 @@ public class ItemServiceTests
     }
   
     [Fact]
+    public void AddItem_WithItemAsNull_ShouldThrowNullReferenceExceptionWithMessage()
+    {
+        var itemRepository = new Mock<IItemRepository>();
+        var itemValidator = new ItemValidator();
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
+        
+        Action result = () => itemService.AddItem(null);
+        
+        result.Should().Throw<NullReferenceException>().WithMessage("Item is null.");
+    }
+    
+    [Fact]
     public void AddItem_WithEmptyName_ShouldThrowValidationExceptionWithMessage()
     {
         var itemRepository = new Mock<IItemRepository>();
@@ -62,7 +74,7 @@ public class ItemServiceTests
 
         result.Should().Throw<ValidationException>().WithMessage("Name cannot be empty.");
     }
-    
+
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]

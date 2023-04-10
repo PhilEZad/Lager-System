@@ -6,7 +6,6 @@ namespace Application.Interfaces;
 public interface IItemService
 {
     public List<Item> GetAllItems();
-
-    public void AddItem(AddItemRequest addItemRequest);
+    public Item AddItem(AddItemRequest addItemRequest);
     public Item EditItem(Item item);
 }

@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Application.Validators;
 using Domain;
+using FluentValidation;
 using Infrastructure.Interfaces;
 
 namespace Application;
@@ -29,34 +30,35 @@ public class ItemService : IItemService
         return itemList;
     }
 
-    public void AddItem(AddItemRequest addItemRequest)
+    public Item AddItem(AddItemRequest addItemRequest)
     {
-        if (addItemRequest == null  || string.IsNullOrEmpty(addItemRequest.Name))
-        {
-            throw new ArgumentException("Name must not be empty");
-        }
         _itemRepository.AddItem(addItemRequest.Name);
+        
+        throw new NotImplementedException();
     }
 
     public Item EditItem(Item item)
     {
         if (item == null){
-            throw new NullReferenceException();
-        }
-        if (string.IsNullOrEmpty(item.Name)){
-            throw new ArgumentException("Name must not be empty");
-        }
-        if (item.Id <= 0){
-            throw new ArgumentException("Id must be above 0");
-        }     
-        Item? returnItem = _itemRepository.EditItem(item);
-        if (returnItem == null){
-            throw new NullReferenceException();
-        }
-        if (item.Name != returnItem.Name){
-            throw new ArgumentException();
+            throw new NullReferenceException("Item is null.");
         }
         
+        var validation = _itemValidator.Validate(item);
+        if (!validation.IsValid){
+            throw new ValidationException(validation.ToString());
+        }
+        
+        Item? returnItem = _itemRepository.EditItem(item);
+        
+        if (returnItem == null){
+            throw new NullReferenceException("Return item is null.");
+        }
+
+        var validationReturn = _itemValidator.Validate(returnItem);
+        if (!validationReturn.IsValid){
+            throw new ValidationException(validationReturn.ToString());
+        }
+
         return returnItem;
     }
 }
