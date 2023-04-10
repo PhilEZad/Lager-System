@@ -12,6 +12,8 @@ namespace Test;
 
 public class ItemServiceTests
 {
+    
+    // Test for ItemService constructor
     [Fact]
     public void ItemServiceWithNullItemRepository_ShouldThrowNullReferenceExceptionWithMessage()
     {
@@ -32,6 +34,8 @@ public class ItemServiceTests
         test.Should().Throw<NullReferenceException>().WithMessage("ItemValidator is null.");
     }
     
+    
+    // Test for GetAllItems method
     [Fact]
     public void GetAllItems_WithReturnOfNull_ShouldThrowNullReferenceExceptionWithMessage()
     {
@@ -43,9 +47,10 @@ public class ItemServiceTests
 
         Action test = () => itemService.GetAllItems();
 
-        test.Should().Throw<NullReferenceException>().WithMessage("List of item is null.");
+        test.Should().Throw<NullReferenceException>().WithMessage("Unable to fetch items from database.");
     }
   
+    // Test for AddItem method
     [Fact]
     public void AddItem_WithItemAsNull_ShouldThrowNullReferenceExceptionWithMessage()
     {
@@ -78,6 +83,7 @@ public class ItemServiceTests
         result.Should().Throw<ValidationException>().WithMessage(errorMessage);
     }
 
+    // Test for EditItem method
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
@@ -124,7 +130,7 @@ public class ItemServiceTests
     }
     
     [Fact]
-    public void EditItem_NotExistInDB_ShouldReturnNullReferenceExceptionWithMessage()
+    public void EditItem_ReturnItemAsNull_ShouldReturnNullReferenceExceptionWithMessage()
     {
         var item = new Item
         {
@@ -210,6 +216,7 @@ public class ItemServiceTests
         test.Should().Throw<NullReferenceException>();
     }
     
+    // Test for DeleteItem method
     [Fact]
     public void DeleteItem_WithValidId_ShouldReturnTrue()
     {

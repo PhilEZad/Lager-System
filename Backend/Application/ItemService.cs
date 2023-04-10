@@ -48,7 +48,7 @@ public class ItemService : IItemService
 
         if (returnItem == null)
         {
-            throw new NullReferenceException("Unable to add item to database.");
+            throw new NullReferenceException("Item does not exist in database.");
         }
         
         var returnValidation = _itemValidator.Validate(returnItem);
@@ -73,7 +73,7 @@ public class ItemService : IItemService
         Item? returnItem = _itemRepository.EditItem(item);
         
         if (returnItem == null){
-            throw new NullReferenceException("Return item is null.");
+            throw new NullReferenceException("Item does not exist in database.");
         }
 
         var validationReturn = _itemValidator.Validate(returnItem);
