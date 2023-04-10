@@ -209,4 +209,30 @@ public class ItemServiceTests
         Action test = () => itemService.EditItem(editItem);
         test.Should().Throw<NullReferenceException>();
     }
+    
+    [Fact]
+    public void DeleteItem_WithValidId_ShouldReturnTrue()
+    {
+        var itemRepository = new Mock<IItemRepository>();
+        var itemValidator = new ItemValidator();
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
+
+        itemRepository.Setup(x => x.DeleteItem(1)).Returns(true);
+
+        var result = itemService.DeleteItem(1);
+
+        result.Should().BeTrue();
+    }
+    
+    [Fact]
+    public void DeleteItem_WithInvalidId_ShouldReturnFalse()
+    {
+        var itemRepository = new Mock<IItemRepository>();
+        var itemValidator = new ItemValidator();
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
+
+        var result = itemService.DeleteItem(-5);
+
+        result.Should().BeFalse();
+    }
 }

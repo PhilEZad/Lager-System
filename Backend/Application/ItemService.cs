@@ -62,7 +62,7 @@ public class ItemService : IItemService
         return returnItem;
     }
     
-    public Item DeleteItem(int id)
+    public Boolean DeleteItem(int id)
     {
         throw new NotImplementedException();
     }

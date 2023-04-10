@@ -25,10 +25,15 @@ public class ItemRepository : IItemRepository
         _dbContext.SaveChanges();
     }
 
-    public Domain.Item? EditItem(Domain.Item item)
+    public Item? EditItem(Item item)
     {
         _dbContext.ItemTable.Update(item);
         _dbContext.SaveChanges();
         return _dbContext.ItemTable.Find(item.Id);
+    }
+
+    public bool DeleteItem(int id)
+    {
+        throw new NotImplementedException();
     }
 }
