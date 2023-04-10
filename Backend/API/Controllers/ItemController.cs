@@ -25,9 +25,9 @@ public class ItemController : ControllerBase
     }
 
     [HttpPost]
-    public void AddItem([FromBody] AddItemRequest dto)
+    public Item AddItem([FromBody] AddItemRequest dto)
     {
-        _itemService.AddItem(dto);
+        return _itemService.AddItem(dto);
     }
 
     [HttpPut]

@@ -58,8 +58,11 @@ public class ItemServiceTests
         result.Should().Throw<NullReferenceException>().WithMessage("Item is null.");
     }
     
-    [Fact]
-    public void AddItem_WithEmptyName_ShouldThrowValidationExceptionWithMessage()
+    [Theory]
+    [InlineData("", "Name cannot be empty.")]
+    [InlineData(null, "Name cannot be null.")]
+    [InlineData("Название теста", "Name may only contain alphanumeric characters.")]
+    public void AddItem_WithInvalidName_ShouldThrowValidationExceptionWithMessage(string itemName, string errorMessage)
     {
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
@@ -67,12 +70,12 @@ public class ItemServiceTests
 
         var testItem = new AddItemRequest
         {
-            Name = ""
+            Name = itemName
         };
 
         Action result = () => itemService.AddItem(testItem);
 
-        result.Should().Throw<ValidationException>().WithMessage("Name cannot be empty.");
+        result.Should().Throw<ValidationException>().WithMessage(errorMessage);
     }
 
     [Theory]
