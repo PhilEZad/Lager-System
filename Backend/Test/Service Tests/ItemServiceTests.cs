@@ -4,6 +4,7 @@ using Application.Interfaces;
 using Application.Validators;
 using Domain;
 using FluentAssertions;
+using FluentValidation;
 using Infrastructure.Interfaces;
 using Moq;
 
@@ -33,16 +34,17 @@ public class ItemServiceTests
     }
   
     [Fact]
-    public void AddItem_Empty_Name()
+    public void AddItem_WithEmptyName_ShouldThrowValidationExceptionWithMessage()
     {
         var itemRepository = new Mock<IItemRepository>();
         ItemService itemService = new ItemService(itemRepository.Object);
 
-        itemRepository.Setup(x => x.GetAllItems()).Returns(new List<Item>());
+        AddItemRequest testItem = new AddItemRequest();
+        testItem.Name = "";
         
-        var result = itemService.GetAllItems();
+        Action result = () => itemService.AddItem(testItem);
 
-        result.Should().BeEmpty();
+        result.Should().Throw<ValidationException>().WithMessage("Name cannot be empty.");
     }
 
     [Theory]
