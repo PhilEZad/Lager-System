@@ -1,10 +1,19 @@
-﻿namespace Application.DTO;
+﻿using Domain;
+
+namespace Application.DTO;
 
 public class AddItemRequest
 {
     public AddItemRequest() { }
-    public AddItemRequest(string name){
-        this.Name = name;
+    
+    public Item AddItemRequestToItem(AddItemRequest itemRequest)
+    {
+        return new Item
+        {
+            Id = 0,
+            Name = this.Name
+        };
     }
+    
     public string Name;
 }

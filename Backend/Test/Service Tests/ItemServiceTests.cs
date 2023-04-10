@@ -55,7 +55,7 @@ public class ItemServiceTests
         
         Action result = () => itemService.AddItem(null);
         
-        result.Should().Throw<NullReferenceException>().WithMessage("Item is null.");
+        result.Should().Throw<NullReferenceException>().WithMessage("AddItemRequest is null.");
     }
     
     [Theory]

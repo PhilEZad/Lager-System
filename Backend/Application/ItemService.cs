@@ -32,9 +32,31 @@ public class ItemService : IItemService
 
     public Item AddItem(AddItemRequest addItemRequest)
     {
-        _itemRepository.AddItem(addItemRequest.Name);
+        if (addItemRequest == null)
+        {
+            throw new NullReferenceException("AddItemRequest is null.");
+        }
         
-        throw new NotImplementedException();
+        Item item = addItemRequest.AddItemRequestToItem(addItemRequest);
+        
+        var validation = _itemValidator.Validate(item);
+        if (!validation.IsValid){
+            throw new ValidationException(validation.ToString());
+        }
+        
+        Item returnItem = _itemRepository.AddItem(item);
+
+        if (returnItem == null)
+        {
+            throw new NullReferenceException("Unable to add item to database.");
+        }
+        
+        var returnValidation = _itemValidator.Validate(returnItem);
+        if (!returnValidation.IsValid){
+            throw new ValidationException(returnValidation.ToString());
+        }
+        
+        return returnItem;
     }
 
     public Item EditItem(Item item)

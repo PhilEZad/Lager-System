@@ -1,7 +1,5 @@
-﻿using Application.DTO;
-using Domain;
+﻿using Domain;
 using Infrastructure.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure;
 
@@ -19,10 +17,11 @@ public class ItemRepository : IItemRepository
         return _dbContext.ItemTable.ToList();
     }
 
-    public void AddItem(string name)
+    public Item AddItem(Item item)
     {
-        _dbContext.ItemTable.Add(new Item() { Id = 0, Name = name });
+        _dbContext.ItemTable.Add(item);
         _dbContext.SaveChanges();
+        return _dbContext.ItemTable.Find(item.Id);
     }
 
     public Item? EditItem(Item item)
