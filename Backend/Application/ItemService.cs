@@ -1,5 +1,6 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
+using Application.Validators;
 using Domain;
 using Infrastructure.Interfaces;
 
@@ -8,10 +9,12 @@ namespace Application;
 public class ItemService : IItemService
 {
     private readonly IItemRepository _itemRepository;
+    private readonly ItemValidator _itemValidator;
     
-    public ItemService(IItemRepository itemRepository)
+    public ItemService(IItemRepository itemRepository, ItemValidator itemValidator)
     {
         _itemRepository = itemRepository ?? throw new NullReferenceException("ItemRepository is null.");
+        _itemValidator = itemValidator ?? throw new NullReferenceException("ItemValidator is null.");
     }
     
     public List<Item> GetAllItems()
