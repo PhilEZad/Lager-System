@@ -16,18 +16,20 @@ public class ItemServiceTests
     public void ItemServiceWithNullItemRepository_ShouldThrowNullReferenceExceptionWithMessage()
     {
         var itemValidator = new ItemValidator();
+        
         Action test = () => new ItemService(null, itemValidator);
 
-        test.Should().Throw<NullReferenceException>();
+        test.Should().Throw<NullReferenceException>().WithMessage("ItemRepository is null.");
     }
 
     [Fact]
     public void ItemServiceWithNullValidator_ShouldThrowNullReferenceExceptionWithMessage()
     {
         var itemRepository = new Mock<IItemRepository>();
+        
         Action test = () => new ItemService(itemRepository.Object, null);
 
-        test.Should().Throw<NullReferenceException>();
+        test.Should().Throw<NullReferenceException>().WithMessage("ItemValidator is null.");
     }
     
     [Fact]
@@ -35,13 +37,13 @@ public class ItemServiceTests
     {
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.GetAllItems()).Returns((List<Item>)null);
 
         Action test = () => itemService.GetAllItems();
 
-        test.Should().Throw<NullReferenceException>();
+        test.Should().Throw<NullReferenceException>().WithMessage("List of item is null.");
     }
   
     [Fact]
@@ -49,58 +51,51 @@ public class ItemServiceTests
     {
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
-        AddItemRequest testItem = new AddItemRequest();
-        testItem.Name = "";
-        
+        var testItem = new AddItemRequest
+        {
+            Name = ""
+        };
+
         Action result = () => itemService.AddItem(testItem);
 
         result.Should().Throw<ValidationException>().WithMessage("Name cannot be empty.");
     }
-
+    
     [Theory]
-    [InlineData(1, "Item 1")]
-    [InlineData(2, "Item 2")]
-    [InlineData(3, "Item 3")]
-    public void GetAllItems_WithInvalidProperties_ShouldThrowValidationExceptionWithMessage(int id, string name)
-    {
-        var itemRepository = new Mock<IItemRepository>();
-        var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
-
-        Action test = () => itemService.AddItem(new AddItemRequest(""));
-        test.Should().Throw<ArgumentException>();
-    }
-
-    [Fact]
-    public void EditItem_WithUnnaturalId_ShouldThrowValidationExceptionWithMessage()
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(-100)]
+    [InlineData(null)]
+    public void EditItem_WithInvalidId_ShouldThrowValidationExceptionWithMessage(int id)
     {
         var editItem = new Item
         {
-            Id = -1,
-            Name = "Name"
+            Id = id,
+            Name = "Test"
         };
 
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.EditItem(editItem));
-
-        // Hvid ID er ugyldigt, retuner ArgumentException
+        
         Action test = () => itemService.EditItem(editItem);
         test.Should().Throw<ValidationException>().WithMessage("Id must be above 0.");
     }
 
-    [Fact]
-    public void EditItem_WithEmptyName_ShouldReturnArgumentException()
+    [Theory]
+    [InlineData("", "Name cannot be empty.")]
+    [InlineData(null, "Name cannot be null.")]
+    [InlineData("Название теста", "Name may only contain alphanumeric characters.")]
+    public void EditItem_WithEmptyName_ShouldReturnValidationExceptWithMessage(string itemName, string errorMessage)
     {
         var editItem = new Item
         {
             Id = 1,
-            Name = ""
+            Name = itemName
         };
 
         var itemRepository = new Mock<IItemRepository>();
@@ -108,15 +103,13 @@ public class ItemServiceTests
         ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.EditItem(editItem));
-
-        // Hvis item Name ikke er tomt, retunere ArgumentException with message
+        
         Action test = () => itemService.EditItem(editItem);
-        test.Should().Throw<ArgumentException>();
+        test.Should().Throw<ValidationException>().WithMessage(errorMessage);
     }
-
-    // Hvis item ikke eksistere i DB, nullReferenceException
+    
     [Fact]
-    public void EditItem_NotExistInDB_ShouldReturnNullReferenceException()
+    public void EditItem_NotExistInDB_ShouldReturnNullReferenceExceptionWithMessage()
     {
         var item = new Item
         {
@@ -131,7 +124,7 @@ public class ItemServiceTests
 
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.EditItem(editItem)).Returns(() =>
         {
@@ -144,7 +137,7 @@ public class ItemServiceTests
         });
 
         Action test = () => itemService.EditItem(editItem);
-        test.Should().Throw<NullReferenceException>();
+        test.Should().Throw<NullReferenceException>().WithMessage("Item does not exist in database.");
     }
 
     [Fact]
@@ -158,7 +151,7 @@ public class ItemServiceTests
 
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.EditItem(editItem)).Returns(() =>
         {
@@ -170,24 +163,18 @@ public class ItemServiceTests
     }
 
     [Fact]
-    public void EditItem_NullItem_ShouldThrowNullArgumentException()
+    public void EditItem_NullItem_ShouldThrowNullReferenceException()
     {
-        var editItem = new Item
-        {
-            Id = 1,
-            Name = "Test"
-        };
-
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         Action test = () => itemService.EditItem(null);
-        test.Should().Throw<NullReferenceException>();
+        test.Should().Throw<NullReferenceException>().WithMessage("Item is null.");
     }
 
     [Fact]
-    public void EditItem_ReturnNullItem_ShouldThrowNullArgumentException()
+    public void EditItem_ReturnNullItem_ShouldThrowNullReferenceException()
     {
         var editItem = new Item
         {
@@ -197,7 +184,7 @@ public class ItemServiceTests
 
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
-        ItemService itemService = new ItemService(itemRepository.Object, itemValidator);
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.EditItem(editItem)).Returns(() =>
         {
