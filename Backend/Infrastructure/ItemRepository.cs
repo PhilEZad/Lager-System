@@ -33,6 +33,8 @@ public class ItemRepository : IItemRepository
 
     public int DeleteItem(int id)
     {
-        throw new NotImplementedException();
+        Item item = _dbContext.ItemTable.Find(id);
+        _dbContext.ItemTable.Remove(item);
+        return _dbContext.SaveChanges();
     }
 }
