@@ -65,7 +65,7 @@ public class ItemServiceTests
     
     [Theory]
     [InlineData("", "Name cannot be empty.")]
-    [InlineData(null, "Name cannot be null.")]
+    [InlineData(null, "Name cannot be empty.")]
     [InlineData("Название теста", "Name may only contain alphanumeric characters.")]
     public void AddItem_WithInvalidName_ShouldThrowValidationExceptionWithMessage(string itemName, string errorMessage)
     {
@@ -109,7 +109,7 @@ public class ItemServiceTests
 
     [Theory]
     [InlineData("", "Name cannot be empty.")]
-    [InlineData(null, "Name cannot be null.")]
+    [InlineData(null, "Name cannot be empty.")]
     [InlineData("Название теста", "Name may only contain alphanumeric characters.")]
     public void EditItem_WithEmptyName_ShouldReturnValidationExceptWithMessage(string itemName, string errorMessage)
     {
@@ -132,15 +132,10 @@ public class ItemServiceTests
     [Fact]
     public void EditItem_ReturnItemAsNull_ShouldReturnNullReferenceExceptionWithMessage()
     {
-        var item = new Item
-        {
-            Id = 1,
-            Name = "Unedited"
-        };
         var editItem = new Item
         {
             Id = 2,
-            Name = "Edited"
+            Name = "Test  Item"
         };
 
         var itemRepository = new Mock<IItemRepository>();
@@ -149,12 +144,7 @@ public class ItemServiceTests
 
         itemRepository.Setup(x => x.EditItem(editItem)).Returns(() =>
         {
-            if (item.Id != editItem.Id)
-            {
-                return null;
-            }
-            item.Name = editItem.Name;
-            return item;
+            return null;
         });
 
         Action test = () => itemService.EditItem(editItem);
@@ -184,7 +174,7 @@ public class ItemServiceTests
     }
 
     [Fact]
-    public void EditItem_NullItem_ShouldThrowNullReferenceException()
+    public void EditItem_ItemAsNull_ShouldThrowNullReferenceException()
     {
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
@@ -225,8 +215,14 @@ public class ItemServiceTests
         var itemService = new ItemService(itemRepository.Object, itemValidator);
 
         itemRepository.Setup(x => x.DeleteItem(1)).Returns(true);
+        
+        var testItem = new Item
+        {
+            Id = 1,
+            Name = "Test Item"
+        };
 
-        var result = itemService.DeleteItem(1);
+        var result = itemService.DeleteItem(testItem);
 
         result.Should().BeTrue();
     }
@@ -238,7 +234,15 @@ public class ItemServiceTests
         var itemValidator = new ItemValidator();
         var itemService = new ItemService(itemRepository.Object, itemValidator);
 
-        var result = itemService.DeleteItem(-5);
+        var testItem = new Item
+        {
+            Id = -5,
+            Name = "Test Item"
+        };
+        
+        itemRepository.Setup(x => x.DeleteItem(1)).Returns(false);
+        
+        var result = itemService.DeleteItem(testItem);
 
         result.Should().BeFalse();
     }

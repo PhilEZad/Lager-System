@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.Helpers;
 using Application.Interfaces;
 using Application.Validators;
 using Domain;
@@ -36,11 +37,12 @@ public class ItemService : IItemService
         {
             throw new NullReferenceException("AddItemRequest is null.");
         }
-        
-        Item item = addItemRequest.AddItemRequestToItem(addItemRequest);
-        
-        var validation = _itemValidator.Validate(item);
-        if (!validation.IsValid){
+
+        Item item = ObjectGenerator.ItemRequestToItem(addItemRequest);
+
+        var validation = _itemValidator.Validate(item, options => options.IncludeRuleSets("Add"));
+
+            if (!validation.IsValid){
             throw new ValidationException(validation.ToString());
         }
         
@@ -70,7 +72,7 @@ public class ItemService : IItemService
             throw new ValidationException(validation.ToString());
         }
         
-        Item? returnItem = _itemRepository.EditItem(item);
+        var returnItem = _itemRepository.EditItem(item);
         
         if (returnItem == null){
             throw new NullReferenceException("Item does not exist in database.");
@@ -84,8 +86,23 @@ public class ItemService : IItemService
         return returnItem;
     }
     
-    public Boolean DeleteItem(int id)
+    public Boolean DeleteItem(Item item)
     {
-        throw new NotImplementedException();
+        if (item == null){
+            throw new NullReferenceException("Item is null.");
+        }
+        
+        var validation = _itemValidator.Validate(item);
+        if (!validation.IsValid){
+            throw new ValidationException(validation.ToString());
+        }
+        
+        Boolean returnBool = _itemRepository.DeleteItem(item.Id);
+        
+        if (!returnBool){
+            throw new NullReferenceException("Item does not exist in database.");
+        }
+
+        return returnBool;
     }
 }
