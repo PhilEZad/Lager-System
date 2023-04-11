@@ -14,7 +14,7 @@ public class ItemValidator : AbstractValidator<Item>
             RuleFor(x => x.Id).NotNull().WithMessage("Id cannot be null.");
 
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name cannot be empty.");
-            RuleFor(x => x.Name).Matches("^[a-zA-Z0-9]*$").WithMessage("Name may only contain alphanumeric characters.");
+            RuleFor(x => x.Name).Matches("^[a-zA-Z0-9 ]*$").WithMessage("Name may only contain alphanumeric characters.");
         });
 
         RuleSet("Add", () =>
@@ -23,7 +23,7 @@ public class ItemValidator : AbstractValidator<Item>
             RuleFor(x => x.Id).NotNull().WithMessage("Id cannot be null.");
 
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name cannot be empty.");
-            RuleFor(x => x.Name).Matches("^[a-zA-Z0-9]*$").WithMessage("Name may only contain alphanumeric characters.");
+            RuleFor(x => x.Name).Matches("^[a-zA-Z0-9 ]*$").WithMessage("Name may only contain alphanumeric characters.");
         });
     }
 }
