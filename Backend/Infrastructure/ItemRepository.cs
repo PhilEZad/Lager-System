@@ -31,7 +31,7 @@ public class ItemRepository : IItemRepository
         return _dbContext.ItemTable.Find(item.Id);
     }
 
-    public bool DeleteItem(int id)
+    public int DeleteItem(int id)
     {
         throw new NotImplementedException();
     }

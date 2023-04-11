@@ -214,7 +214,10 @@ public class ItemServiceTests
         var itemValidator = new ItemValidator();
         var itemService = new ItemService(itemRepository.Object, itemValidator);
 
-        itemRepository.Setup(x => x.DeleteItem(1)).Returns(true);
+        itemRepository.Setup(x => x.DeleteItem(1)).Returns(() =>
+        {
+            return 1;
+        });
         
         var testItem = new Item
         {
@@ -227,8 +230,11 @@ public class ItemServiceTests
         result.Should().BeTrue();
     }
     
-    [Fact]
-    public void DeleteItem_WithInvalidId_ShouldReturnFalse()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(-100)]
+    public void DeleteItem_WithInvalidId_ShouldReturnFalse(int id)
     {
         var itemRepository = new Mock<IItemRepository>();
         var itemValidator = new ItemValidator();
@@ -236,14 +242,36 @@ public class ItemServiceTests
 
         var testItem = new Item
         {
-            Id = -5,
+            Id = id,
             Name = "Test Item"
         };
-        
-        itemRepository.Setup(x => x.DeleteItem(1)).Returns(false);
-        
+
         var result = itemService.DeleteItem(testItem);
 
         result.Should().BeFalse();
     }
+    
+    [Fact]
+    public void DeleteItem_WithNoChangeReturned_ShouldReturnFalse()
+    {
+        var itemRepository = new Mock<IItemRepository>();
+        var itemValidator = new ItemValidator();
+        var itemService = new ItemService(itemRepository.Object, itemValidator);
+
+        itemRepository.Setup(x => x.DeleteItem(1)).Returns(() =>
+        {
+            return 0;
+        });
+        
+        var testItem = new Item
+        {
+            Id = 1,
+            Name = "Test Item"
+        };
+
+        var result = itemService.DeleteItem(testItem);
+
+        result.Should().BeFalse();
+    }
+    
 }

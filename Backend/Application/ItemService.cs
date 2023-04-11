@@ -91,18 +91,18 @@ public class ItemService : IItemService
         if (item == null){
             throw new NullReferenceException("Item is null.");
         }
-        
-        var validation = _itemValidator.Validate(item);
-        if (!validation.IsValid){
-            throw new ValidationException(validation.ToString());
-        }
-        
-        Boolean returnBool = _itemRepository.DeleteItem(item.Id);
-        
-        if (!returnBool){
-            throw new NullReferenceException("Item does not exist in database.");
-        }
 
-        return returnBool;
+        if (item.Id <= 0)
+        {
+            return false;
+        }
+        
+        int change = _itemRepository.DeleteItem(item.Id);
+        
+        if (change == 0)
+        {
+            return false;
+        }
+        return true;
     }
 }
