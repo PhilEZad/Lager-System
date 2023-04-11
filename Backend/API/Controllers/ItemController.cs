@@ -34,4 +34,10 @@ public class ItemController : ControllerBase
     public Item EditItem([FromBody] Item item ){
         return _itemService.EditItem(item);
     }
+    
+    [HttpDelete]
+    public Boolean DeleteItem(Item item)
+    {
+        return _itemService.DeleteItem(item);
+    }
 }

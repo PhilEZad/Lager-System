@@ -83,7 +83,9 @@ public class ItemServiceTests
         result.Should().Throw<ValidationException>().WithMessage(errorMessage);
     }
 
-    // Test for EditItem method
+    /*
+     * Test for EditItem method
+     */
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
@@ -104,7 +106,7 @@ public class ItemServiceTests
         itemRepository.Setup(x => x.EditItem(editItem));
         
         Action test = () => itemService.EditItem(editItem);
-        test.Should().Throw<ValidationException>().WithMessage("Id must be above 0.");
+        test.Should().Throw<ValidationException>().WithMessage("Id must be greater than 0.");
     }
 
     [Theory]
@@ -206,7 +208,9 @@ public class ItemServiceTests
         test.Should().Throw<NullReferenceException>();
     }
     
-    // Test for DeleteItem method
+    /**
+     * Test for DeleteItem method
+     */
     [Fact]
     public void DeleteItem_WithValidId_ShouldReturnTrue()
     {

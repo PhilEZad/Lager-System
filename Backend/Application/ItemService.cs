@@ -77,6 +77,10 @@ public class ItemService : IItemService
         if (returnItem == null){
             throw new NullReferenceException("Item does not exist in database.");
         }
+        
+        if (item.Name != returnItem.Name){
+            throw new ArgumentException();
+        }
 
         var validationReturn = _itemValidator.Validate(returnItem);
         if (!validationReturn.IsValid){
