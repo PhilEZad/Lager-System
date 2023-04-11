@@ -68,18 +68,19 @@ public class ItemService : IItemService
         }
         
         var validation = _itemValidator.Validate(item);
+        
         if (!validation.IsValid){
             throw new ValidationException(validation.ToString());
         }
         
-        var returnItem = _itemRepository.EditItem(item);
+        Item? returnItem = _itemRepository.EditItem(item);
         
         if (returnItem == null){
             throw new NullReferenceException("Item does not exist in database.");
         }
         
         if (item.Name != returnItem.Name){
-            throw new ArgumentException();
+            throw new ArgumentException("No change was made to the item.");
         }
 
         var validationReturn = _itemValidator.Validate(returnItem);

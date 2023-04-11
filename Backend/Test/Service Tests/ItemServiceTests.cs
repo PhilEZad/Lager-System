@@ -137,7 +137,7 @@ public class ItemServiceTests
         var editItem = new Item
         {
             Id = 2,
-            Name = "Test  Item"
+            Name = "Test"
         };
 
         var itemRepository = new Mock<IItemRepository>();
