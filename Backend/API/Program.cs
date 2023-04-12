@@ -1,3 +1,4 @@
+using FluentValidation;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,8 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.EnableSensitiveDataLogging();
     options.EnableDetailedErrors();
 });
+
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 // Registering layers
 Application.DependencyResolver.DependencyResolver.RegisterApplicationLayer(builder.Services);

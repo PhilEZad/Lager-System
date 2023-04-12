@@ -1,7 +1,5 @@
-﻿using Application.DTO;
-using Domain;
+﻿using Domain;
 using Infrastructure.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure;
 
@@ -14,21 +12,29 @@ public class ItemRepository : IItemRepository
         _dbContext = dbContext ?? throw new NullReferenceException("DatabaseContext can not be null.");
     }
 
-    public List<Domain.Item> GetAllItems()
+    public List<Item> GetAllItems()
     {
         return _dbContext.ItemTable.ToList();
     }
 
-    public void AddItem(string name)
+    public Item AddItem(Item item)
     {
-        _dbContext.ItemTable.Add(new Domain.Item() { Id = 0, Name = name });
+        _dbContext.ItemTable.Add(item);
         _dbContext.SaveChanges();
+        return _dbContext.ItemTable.Find(item.Id);
     }
 
-    public Domain.Item? EditItem(Domain.Item item)
+    public Item? EditItem(Item item)
     {
         _dbContext.ItemTable.Update(item);
         _dbContext.SaveChanges();
         return _dbContext.ItemTable.Find(item.Id);
+    }
+
+    public int DeleteItem(int id)
+    {
+        Item item = _dbContext.ItemTable.Find(id);
+        _dbContext.ItemTable.Remove(item);
+        return _dbContext.SaveChanges();
     }
 }
