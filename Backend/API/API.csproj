@@ -1,20 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Application\Application.csproj" />
-      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    </ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <Content Include="Controllers\ItemController.cs" />
+  </ItemGroup>
 </Project>
